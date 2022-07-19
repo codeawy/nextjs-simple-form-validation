@@ -6,6 +6,7 @@ import FormInput from "components/FormInput";
 import { formInputs } from "utils/formInputs";
 import { postDataValidation } from "validation/postValidation";
 import FormInputErrorMsg from "components/FormInputErrorMsg";
+import FormSubmitBtn from "components/FormSubmitBtn";
 
 export default function Home() {
   // ** States
@@ -80,6 +81,7 @@ export default function Home() {
                 <FormInputErrorMsg errors={errors} name={name} />
               </div>
             ))}
+            <FormSubmitBtn text="Submit" isError={isError} />
           </form>
         </div>
       </main>
