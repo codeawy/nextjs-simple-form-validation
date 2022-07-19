@@ -54,6 +54,26 @@ export default function Home() {
     }
   };
 
+  const submitHandler = e => {
+    e.preventDefault();
+
+    setErrors(postDataValidation(post));
+    if (Object.keys(postDataValidation(post)).length) {
+      setIsError(true);
+      return;
+    }
+    setPostList([...postList, post]);
+
+    setPost({
+      title: "",
+      description: "",
+      image: "",
+      creator: "",
+      email: "",
+    });
+    setIsError(false);
+  };
+
   return (
     <div>
       <Head>
@@ -66,7 +86,7 @@ export default function Home() {
         <h1 className="my-20 text-center text-3xl">Simple Form Validation</h1>
         <div className="flex justify-between">
           {IS_POSTS_LENGTH}
-          <form className="ml-5 w-2/6" onSubmit={() => {}} autoComplete="off">
+          <form className="ml-5 w-2/6" onSubmit={submitHandler} autoComplete="off">
             {formInputs.map(({ name, label, type }, idx) => (
               <div key={idx}>
                 <FormInput
