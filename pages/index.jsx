@@ -5,6 +5,7 @@ import Post from "components/Post";
 import FormInput from "components/FormInput";
 import { formInputs } from "utils/formInputs";
 import { postDataValidation } from "validation/postValidation";
+import FormInputErrorMsg from "components/FormInputErrorMsg";
 
 export default function Home() {
   // ** States
@@ -76,6 +77,7 @@ export default function Home() {
                   onChange={changeHandler}
                   errors={errors}
                 />
+                <FormInputErrorMsg errors={errors} name={name} />
               </div>
             ))}
           </form>
