@@ -1,5 +1,6 @@
 export const postDataValidation = values => {
   const errors = {};
+  const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(values.image);
 
   if (!values.title.trim() || values.title.length < 10) {
     errors.title = "Post title must be between 10 and 30 characters!";
@@ -7,7 +8,7 @@ export const postDataValidation = values => {
   if (!values.description.trim() || values.title.length < 10) {
     errors.description = "Post description must be between 10 and 150 characters!";
   }
-  if (!values.image.trim()) {
+  if (!values.image.trim() || !validUrl) {
     errors.image = "Image URL is required";
   }
   if (!values.creator.trim()) {

@@ -22,16 +22,6 @@ export default function Home() {
   const [isError, setIsError] = useState(false);
 
   //** Renders
-  const IS_POSTS_LENGTH = !postList.length ? (
-    <Alert
-      type="info"
-      msg="Change a few things up and try
-            submitting again."
-    />
-  ) : (
-    <div className="w-4/6 grid gap-3 grid-cols-3">{renderPosts()}</div>
-  );
-
   const renderPosts = () => {
     return (
       <>
@@ -41,6 +31,18 @@ export default function Home() {
       </>
     );
   };
+
+  const IS_POSTS_LENGTH = !postList.length ? (
+    <Alert
+      type="info"
+      msg="Change a few things up and try
+            submitting again."
+    />
+  ) : (
+    <div className="w-full lg:w-4/6 mt-20 lg:mt-0 grid gap-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+      {renderPosts()}
+    </div>
+  );
 
   // ** Handlers
   const changeHandler = e => {
@@ -83,10 +85,14 @@ export default function Home() {
       </Head>
 
       <main className="container">
-        <h1 className="my-20 text-center text-3xl">Simple Form Validation</h1>
-        <div className="flex justify-between">
+        <h1 className="my-10 lg:my-20 text-center text-3xl">Simple Form Validation</h1>
+        <div className="flex flex-col-reverse  lg:flex-row justify-between">
           {IS_POSTS_LENGTH}
-          <form className="ml-5 w-2/6" onSubmit={submitHandler} autoComplete="off">
+          <form
+            className="ml-0 lg:ml-5 mt-10 lg:mt-0 w-full lg:w-2/6"
+            onSubmit={submitHandler}
+            autoComplete="off"
+          >
             {formInputs.map(({ name, label, type }, idx) => (
               <div key={idx}>
                 <FormInput
