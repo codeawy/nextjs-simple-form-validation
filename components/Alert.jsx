@@ -11,7 +11,7 @@ const Alert = ({ type = "info", msg = "" }) => {
     }
   };
   return (
-    <div className={`p-4 mb-4 text-sm w-fit ${renderAlertTypeClasses()}`} role="alert">
+    <div className={`p-4 mb-4 text-sm w-fit h-fit ${renderAlertTypeClasses()}`} role="alert">
       <span className="font-medium">Alert: </span>
       {msg}
     </div>
