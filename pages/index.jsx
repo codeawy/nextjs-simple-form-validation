@@ -66,13 +66,13 @@ export default function Home() {
     }
     setPostList([...postList, post]);
 
-    setPost({
-      title: "",
-      description: "",
-      image: "",
-      creator: "",
-      email: "",
-    });
+    // setPost({
+    //   title: "",
+    //   description: "",
+    //   image: "",
+    //   creator: "",
+    //   email: "",
+    // });
     setIsError(false);
   };
 
