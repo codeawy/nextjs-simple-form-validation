@@ -1,8 +1,14 @@
 import { txtSlicer } from "utils/func";
 
-const Post = ({ title, description, image, creator, email }) => {
+const Post = ({ post, postList, setPostList }) => {
+  const { id, title, description, image, creator, email } = post;
+  const removePostHandler = () => {
+    const arr = [...postList];
+    const filteredArr = arr.filter(item => item.id !== id);
+    setPostList(filteredArr);
+  };
   return (
-    <div className="border-2 border-gray-700 rounded-lg flex flex-col justify-content h-fit overflow-hidden">
+    <div className="border-2 border-gray-700 rounded-lg flex flex-col justify-content h-fit overflow-hidden relative">
       <div className="post-header">
         <img src={image} alt="img" className="w-full h-52" />
       </div>
@@ -23,6 +29,12 @@ const Post = ({ title, description, image, creator, email }) => {
           <span className="font-bold mr-1">Email:</span>
           {txtSlicer(email, 15)}
         </h3>
+        <span
+          className=" absolute top-3 right-3 bg-red-500 w-8 h-8 rounded-full flex items-center justify-center text-white cursor-pointer"
+          onClick={removePostHandler}
+        >
+          X
+        </span>
       </div>
     </div>
   );

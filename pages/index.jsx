@@ -26,7 +26,7 @@ export default function Home() {
     return (
       <>
         {postList.map((post, idx) => (
-          <Post key={idx} {...post} />
+          <Post key={idx} post={post} postList={postList} setPostList={setPostList} />
         ))}
       </>
     );
@@ -64,15 +64,15 @@ export default function Home() {
       setIsError(true);
       return;
     }
-    setPostList([...postList, post]);
+    setPostList([...postList, { ...post, id: postList.length + 1 }]);
 
-    // setPost({
-    //   title: "",
-    //   description: "",
-    //   image: "",
-    //   creator: "",
-    //   email: "",
-    // });
+    setPost({
+      title: "",
+      description: "",
+      image: "",
+      creator: "",
+      email: "",
+    });
     setIsError(false);
   };
 
